@@ -19,7 +19,10 @@ namespace Pesebrera.VistaModelo
 
         Archivos _Controlarchivo = new Archivos();
 
-        public string Nombrearchivo{ get; set; }
+        public string Nombrearchivo { get; set; }
+        public string NombrearchivoBovinos { get; set; }
+        public string NombrearchivoEquinos { get; set; }
+
         public List<Animal> Bovinos { get; set; }
         public List<Animal> Equinos { get; set; }
 
@@ -27,6 +30,7 @@ namespace Pesebrera.VistaModelo
         {
             try
             {
+                //Obtiene listado de animales
                 var ListaAnimales = _Controlarchivo.LeerArchivo(Nombrearchivo);
 
                 if (ListaAnimales.Count == 0)
@@ -34,15 +38,15 @@ namespace Pesebrera.VistaModelo
                     return "No se encontraron registros para procesar";                   
                 }
 
-                //Obtiene listado de animales
+                //Recorre animales y los clasifica
                 foreach (var animal in ListaAnimales)
                 {
                     EscribirDatosAnimales(animal);
                 }
 
                 //Crea archivos
-                _Controlarchivo.EscribirArchivo(Bovinos, "bovinos");
-                _Controlarchivo.EscribirArchivo(Equinos, "equinos");
+                _Controlarchivo.EscribirArchivo(Bovinos, NombrearchivoBovinos);
+                _Controlarchivo.EscribirArchivo(Equinos, NombrearchivoEquinos);
 
                 return "ok";
             }

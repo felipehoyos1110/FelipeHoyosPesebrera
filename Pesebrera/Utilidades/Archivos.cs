@@ -33,7 +33,6 @@ namespace Pesebrera.Utilidades
                 }
             }
  
-
             return animales;
             
         }
@@ -41,26 +40,16 @@ namespace Pesebrera.Utilidades
         public void EscribirArchivo(List<Animal> ListaAnimales, string archivo)
         {
             //Crea archivo de animales
-            try
-            {
-                StreamWriter sw = new StreamWriter("C:\\pesebrera\\" + archivo + ".txt", true, Encoding.ASCII);
+               
+            StreamWriter sw = new StreamWriter(archivo, true, Encoding.ASCII);
 
-                foreach (var Animal in ListaAnimales)
-                {
-                    sw.WriteLine(Animal.Nombre);
-                }
+            foreach (var Animal in ListaAnimales)
+            {
+                sw.WriteLine(Animal.Nombre);
+            }
 
-                //Close the file
-                sw.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
-            }
+            //Cerrar archivo
+            sw.Close();
 
         }
 

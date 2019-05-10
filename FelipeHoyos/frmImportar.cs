@@ -1,5 +1,6 @@
 ﻿using Pesebrera.VistaModelo;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,11 +44,14 @@ namespace FelipeHoyos
 
             //Generar archivos
             animal.Nombrearchivo = txtRutaArchivo.Text;
+            animal.NombrearchivoBovinos = ConfigurationManager.AppSettings["ArchivoBovinos"].ToString();
+            animal.NombrearchivoEquinos = ConfigurationManager.AppSettings["ArchivoEquinos"].ToString();
+
             string resultado = animal.LeerAnimales();
 
             if (resultado == "ok")
             {
-                MessageBox.Show("Proceso terminado.", "Pesebrera",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Proceso terminado.", "Pesebrera", MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
