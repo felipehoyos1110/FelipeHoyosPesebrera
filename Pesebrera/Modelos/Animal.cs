@@ -8,28 +8,6 @@ namespace Pesebrera.Modelos
 {
     public class Animal
     {
-        public string Nombre { get; set; }
-
-        public void EscribirDatosAnimales()
-        {
-
-        }
-
-        void EscribirBovino()
-        {
-
-        }
-
-        void EscribirEquino()
-        {
-
-        }
-
-        public void Clasificar()
-        {
-
-        }
-
-
+        public string Nombre { get; set; }    
     }
 }

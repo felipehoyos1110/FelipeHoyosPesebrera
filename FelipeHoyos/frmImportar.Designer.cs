@@ -32,6 +32,7 @@
             this.lblRuta = new System.Windows.Forms.Label();
             this.ofdArchivo = new System.Windows.Forms.OpenFileDialog();
             this.btnCargar = new System.Windows.Forms.Button();
+            this.btnGenerar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtRutaArchivo
@@ -64,11 +65,22 @@
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Location = new System.Drawing.Point(79, 90);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(110, 23);
+            this.btnGenerar.TabIndex = 3;
+            this.btnGenerar.Text = "Generar";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            // 
             // frmImportar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 210);
+            this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.lblRuta);
             this.Controls.Add(this.txtRutaArchivo);
@@ -85,6 +97,7 @@
         private System.Windows.Forms.Label lblRuta;
         private System.Windows.Forms.OpenFileDialog ofdArchivo;
         private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.Button btnGenerar;
     }
 }
 

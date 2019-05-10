@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pesebrera.VistaModelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,6 @@ namespace FelipeHoyos
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            var fileContent = string.Empty;
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -31,57 +31,27 @@ namespace FelipeHoyos
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Get the path of specified file
-                    txtRutaArchivo.Text = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        while (true)
-                        {
-                            fileContent = reader.ReadLine();
-                            if (fileContent == null)
-                            {
-                                break;
-                            }
-
-                            if (fileContent.Contains("B"))
-                            {
-                                Escribir("Bovinos", fileContent);
-                            }
-                            else
-                            {
-                                Escribir("Equinos", fileContent);
-                            }
-
-                        }
-                    }
+                    //Obtener la direccion del archivo
+                    txtRutaArchivo.Text = openFileDialog.FileName;                 
                 }
             }
         }
 
-        void Escribir(string archivo, string texto)
+        private void btnGenerar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new StreamWriter("C:\\pesebrera\\" + archivo + ".txt");
+            AnimalVistaModelo animal = new AnimalVistaModelo();
 
-                //Write a line of text
-                sw.WriteLine(texto);
+            //Generar archivos
+            animal.Nombrearchivo = txtRutaArchivo.Text;
+            string resultado = animal.LeerAnimales();
 
-                //Close the file
-                sw.Close();
-            }
-            catch (Exception e)
+            if (resultado == "ok")
             {
-                Console.WriteLine("Exception: " + e.Message);
+                MessageBox.Show("Proceso terminado.", "Pesebrera",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
-            finally
+            else
             {
-                Console.WriteLine("Executing finally block.");
+                MessageBox.Show(resultado, "Pesebrera", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
