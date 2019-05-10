@@ -16,28 +16,23 @@ namespace Pesebrera.Utilidades
         public List<Animal> LeerArchivo(string archivo)
         {
             List<Animal> animales = new List<Animal>();
-            try
+         
+            //Lee el archivo y los agrega a la lista de animales                         
+            using (StreamReader reader = new StreamReader(archivo))
             {
-                //Lee el archivo y los agrega a la lista de animales                         
-                using (StreamReader reader = new StreamReader(archivo))
+                while (true)
                 {
-                    while (true)
+                    Animal animal = new Animal();
+                    fileContent = reader.ReadLine();
+                    if (fileContent == null)
                     {
-                        Animal animal = new Animal();
-                        fileContent = reader.ReadLine();
-                        if (fileContent == null)
-                        {
-                            break;
-                        }
-                        animal.Nombre = fileContent;
-                        animales.Add(animal);
+                        break;
                     }
+                    animal.Nombre = fileContent;
+                    animales.Add(animal);
                 }
             }
-            catch
-            {
-
-            }
+ 
 
             return animales;
             

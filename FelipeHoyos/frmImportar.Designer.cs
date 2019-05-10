@@ -39,6 +39,7 @@
             // 
             this.txtRutaArchivo.Location = new System.Drawing.Point(79, 47);
             this.txtRutaArchivo.Name = "txtRutaArchivo";
+            this.txtRutaArchivo.ReadOnly = true;
             this.txtRutaArchivo.Size = new System.Drawing.Size(303, 20);
             this.txtRutaArchivo.TabIndex = 0;
             // 
